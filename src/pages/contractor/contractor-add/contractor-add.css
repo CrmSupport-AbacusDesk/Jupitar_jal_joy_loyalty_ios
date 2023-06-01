@@ -1,0 +1,21 @@
+page-contractor-add .sprate-block {
+  padding: 10px;
+  border: 1px dashed #2e5ea2;
+  border-radius: 6px;
+  margin-top: 16px;
+}
+
+page-contractor-add .item-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  grid-column-gap: 10px;
+}
+/*# sourceMappingURL=contractor-add.css.map */

@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-navbar>
+      <ion-title>{{'Plumber Profile' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+<ion-toolbar class="ion-stc">
+    <div class="ion-tab-btn" style="margin: 5px;">
+        <ion-segment [(ngModel)]="information">
+          
+          <ion-segment-button  value="Basic_Details">
+            <span >{{ 'Basic Details' | translate }}</span>
+  
+          </ion-segment-button>
+          
+          <ion-segment-button  value="Transaction">
+            <span >{{ 'Point Transaction' | translate }}</span>
+
+          </ion-segment-button>
+          
+          
+        </ion-segment>
+      </div>
+    </ion-toolbar>  
+      <div [ngSwitch]="information" class="pl16 pr16 ">
+        <ng-container *ngSwitchCase="'Basic_Details'">
+          <div class="profile-container">
+              <div class="background-white hero"></div>
+              <div class="user-profile">
+                 
+                  <h2>{{karigar_detail.first_name |titlecase}}</h2>
+                  <h6>{{karigar_detail.type}}</h6>
+                  <p class="{{karigar_detail.status}}">
+                      {{karigar_detail.status}}
+                      <i class="material-icons Verified " *ngIf="karigar_detail.status =='Verified'">verified_user </i>
+                      <i class="material-icons Pending " *ngIf="karigar_detail.status =='Pending'">update</i>
+                      <i class="material-icons Suspect " *ngIf="karigar_detail.status =='Suspect'">help</i>
+                      <i class="material-icons Reject " *ngIf="karigar_detail.status =='Reject'">cancel</i>
+                  </p>
+                  
+                  <!-- <button class="edit" (click)="updateProfile()"> <i class="material-icons">edit</i></button> -->
+                  
+              </div>
+              
+              
+              <div class="padding16">
+                  <div class="profile-card">
+                      <div class="text-box">
+                          <p>{{ 'Mobile No' | translate }}</p>
+                          <h6>{{karigar_detail.mobile_no}}</h6>
+                      </div>
+                      <div class="text-box" *ngIf="karigar_detail.whatsapp_mobile_no">
+                          <p>{{ 'Whats App Number' | translate }}</p>
+                          <h6>{{karigar_detail.whatsapp_mobile_no}}</h6>
+                      </div>
+                      <div class="text-box"  >
+                          <p>{{ 'Email ID' | translate }}</p>
+                          <h6>{{karigar_detail.email ? karigar_detail.email :'N/A'}}</h6>
+                      </div>
+                      <div class="text-box">
+                          <p>{{ 'Date of Birth' | translate}}</p>
+                          <h6>{{(karigar_detail.dob !='') ? (karigar_detail.dob| date:'d MMM,y'):('----')}}</h6>
+                      </div>
+                      <!-- <div class="text-box" >
+                          <p>{{ 'Date of Anniversary' | translate}}</p>
+                          <h6>{{(karigar_detail.doa !='0000-00-00') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}}</h6>
+                      </div> -->
+                      
+                      <div class="text-box">
+                          <p>{{ 'Address' | translate}}</p>
+                          <h6>{{karigar_detail.address |titlecase}} {{karigar_detail.state |titlecase}} {{karigar_detail.district |titlecase}} {{karigar_detail.city |titlecase}} {{karigar_detail.pincode }}</h6>
+                      </div>
+                  </div>
+                
+                  
+                  <div class="profile-card"  *ngIf="karigar_detail.document_image && karigar_detail.document_type && karigar_detail.document_no">
+                      <div class="text-center">
+                          <h2>{{ 'Document Information' | translate }}</h2>
+                      </div>
+                      <div class="text-box">
+                          <div class="doc-box">
+                              <img src="{{upload_url + karigar_detail.document_image}}" (click)="viewDoc()">
+                          </div>
+                      </div>
+                      <div class="text-box">
+                          <p>{{karigar_detail.document_type}}</p>
+                          <h6>{{karigar_detail.document_no}}</h6>
+                      </div>
+                  </div>
+                  
+                 
+              </div>
+          </div>
+        </ng-container>
+          <ng-container *ngSwitchCase="'Transaction'">
+         
+           
+                <div class="no-history" *ngIf="point_received.length == 0">
+                  <img src="assets/imgs/history.png">
+                  <p>{{'No History' | translate}}</p>
+                </div>
+                <div class="point-block" *ngFor="let list of point_received; let i=index" >
+                  <div class="point-content">
+                    <p>{{list.summary | translate}}</p>
+                    <span>{{list.date_created | date:'d MMMM y'}}</span>
+                  </div>
+                  <div class="pts">{{list.points}} PT</div>
+                </div>
+              
+              
+             
+          </ng-container>
+
+        </div>
+      </ion-content>

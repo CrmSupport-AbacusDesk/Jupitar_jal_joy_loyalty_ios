@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,eADW,CACX,MAAM,CAAC,GAAG,CAAC;EACP,KAAK,EAAE,OAAO;CACjB",
+    "sources": [
+        "offer-list.scss"
+    ],
+    "names": [],
+    "file": "offer-list.css"
+}

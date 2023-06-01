@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ContractorDetailPage page.
+  
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'Channel Partner Points Detail' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="cs-list">
+    <div class="top-block">
+      <p> {{'Company Name' | translate}} : {{conDetail.distributor_company_name | titlecase}}</p>
+      <p>{{conDetail.distributor_mobile}}</p>
+
+    </div>
+    <div class="middle-block">
+      <div class="three-block bil_dtls">
+        <p>{{'Date' | translate}} : <strong>{{conDetail.date_created |  date:'d MMMM y'}}</strong></p>
+
+
+        <p>{{'Bill No.' | translate}} : <strong>{{conDetail.bill_no}}</strong></p>
+        <p>{{'Bill Date' | translate}} : <strong>{{conDetail.bill_date |  date:'d MMMM y'}}</strong></p>
+        <p>{{'Bill Amount Without Gst' | translate}} : <strong>{{conDetail.bill_amount}}</strong></p>
+
+        <p>{{'Status' | translate}} : <strong class="{{conDetail.status}}">{{conDetail.status}}</strong> </p>
+      </div>
+    </div>
+    <div class="top-block footer-block">
+      <p>{{'Points Earned' | translate}}: <strong style="font-size: 14px; color: #2e5ea2;">{{conDetail.points}}</strong></p>
+    </div>
+  </div>
+  
+  <!-- <ng-container *ngIf="productData.length">
+    <h2>{{'Items Detail' | translate}}</h2>
+    
+    <ion-item  *ngFor="let row of productData; let i = index">
+      <p><strong>{{'Product Detail' | translate}}:</strong> {{row.product_point_group | titlecase}}</p>
+      <p><strong>{{'Quantity' | translate}}:</strong>  {{row.qty}}</p>
+
+      <p *ngIf="conDetail.status =='Reject'"><strong>{{'Reason' | translate}}:</strong>  {{conDetail.status_reason ? conDetail.status_reason :'N/A'}}</p>
+    </ion-item>
+  </ng-container> -->
+  
+  
+  <ng-container >
+    <h2>{{'Bill Image' | translate}}</h2>
+    <div class="pr16 pl16" *ngFor="let row of productDataImg; let i = index">
+      <div class="bill_img">
+        <img src="{{upload_url + row.image}}">
+      </div>
+    </div>
+  </ng-container>
+  
+</ion-content>

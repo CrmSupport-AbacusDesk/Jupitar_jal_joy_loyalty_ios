@@ -1,0 +1,155 @@
+.tr-status {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+    .tag {
+        h1 {
+            font-size: 12px;
+            color: #000;
+            opacity: 0.6;
+        }
+    }
+    .pending {
+        position: relative;
+        p {
+            font-size: 12px;
+            color: #FF8431;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/hourglass.svg) no-repeat center;
+            background-size: cover;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+        
+        }
+    }
+    .reject {
+        position: relative;
+        p {
+            font-size: 12px;
+            color: #ff0000;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/reject.svg) no-repeat center;
+            background-size: cover;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+        
+        
+        }
+    }
+    .approved {
+        position: relative;
+        p {
+            font-size: 12px;
+            color: #1C6A2F;
+            font-weight: 600;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/approve.svg) no-repeat center;
+            background-size: cover;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+        
+        }
+    }
+    .received {
+        position: relative;
+        p {
+            font-size: 12px;
+            color: #6AC259;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/checked.svg) no-repeat center;
+            background-size: cover;
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+        
+        }
+    }
+    .transfer {
+        position: relative;
+        p {
+            font-size: 12px;
+            color: #00B5C9;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/transfer.svg) no-repeat center;
+            background-size: cover;
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -25px;
+        
+        }
+    }
+    .btn-received {
+        position: relative;
+        display: flex;
+        button {
+            color: #fff;
+            background: #6AC259 !important;
+            border-radius: 3px;
+            padding: 10px 10px !important;
+            padding-left: 26px !important;
+            margin-left: 165px !important;
+            margin-top: -35px !important;
+        }
+        &:after {
+            content: "";
+            background: url(../assets/icons/check.svg) no-repeat center;
+            background-size: cover;
+            width: 14px;
+            height: 14px;
+            position: absolute;
+            top: 10px;
+            left: 6px;
+        }
+    }
+
+    .no-history {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        align-items: center;
+        
+        img{
+            height: 60px;
+            width: min-content;
+            margin-bottom: 10px;
+        }
+        p{
+            margin-top: 10px !important;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+    }
+}

@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'New Arrival Product Details'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div class="slide-image h200">
+      <!-- <ion-slides class="cs-slide" *ngIf="arrival_prod_detail.image" [initialSlide]="0" pager autoplay="1000" speed="1000" loop="true">
+          <ion-slide *ngFor="let row of arrival_prod_detail.image; let i=index" (click)="viewDetail(row.image_name)">
+              <div class="swiper-zoom-container">
+                  <img [src]="upload_url+row.image_name">
+              </div>
+          </ion-slide>
+      </ion-slides> -->
+      <div class="swiper-zoom-container" *ngIf="arrival_prod_detail.image">
+        <img [src]="upload_url+arrival_prod_detail.image[0].image_name">
+      </div>
+  </div>
+
+  <div class="item-table">
+    <table>
+      <tr>
+        <td class="w85">Category</td>
+        <th>{{arrival_prod_detail.category_name}}</th>
+      </tr>
+      <tr>
+        <td class="w85">Name</td>
+        <th>{{arrival_prod_detail.product_name | titlecase}}</th>
+      </tr>
+    
+      <tr *ngIf="arrival_prod_detail.desc!=''">
+        <td class="w85">Description</td>
+        <th>{{arrival_prod_detail.desc}}</th>
+      </tr>
+      
+    </table>
+  </div>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>aboutus-modal</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="main-modal">
+        <div class="modal-box">
+            <h1> {{'Jupiter AquaLines' | translate}}</h1>
+            <h2>{{'Your request to access the  Jupiter AquaLines is under review. You will be able to log in as soon as the overseeing Admin acknowledges your application' | translate}}.</h2>
+            <p>{{'Meanwhile, you can contact us' | translate}} <a href="tel:1800 212 0192">1800 212 0192</a> {{'or mail us' | translate}} <span>jal@jaljoy.com</span> {{'if you any question' | translate}}.</p>
+            <div class="modal-cls" (click)="gotoHomePage()">
+                <i class="material-icons">cancel</i>
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,82 @@
+
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'Products' | translate}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="fix" style="margin-top:40px">
+        <div class="search">
+            <ion-searchbar type='text' placeholder="{{'Search' | translate}}" name='search' #search="ngModel" [(ngModel)]="filter.search" 
+            (ngModelChange)="getProductList(filter.search)"></ion-searchbar>
+        </div>
+        <!-- <div class="link-btn">
+            <a (click)="gotoProductFilterPage(filter.search)">View Product</a>
+        </div> -->
+    </div>
+    <div class="Product grid-list" >
+        <div ion-item class="bg-product" (click)="goOnProductDetailPage(list.id)" *ngFor="let list of prod_cat_list; let i=index">
+            <div class="thumbnail">
+                <ion-slides class="cs-slide" pager autoplay="1000" speed="1000" loop="true" *ngIf="list.image && list.image.length>2" >
+                    <ion-slide *ngFor="let image of list.image; let i=index">
+                        <img [src]="uploadUrl+image.image_name">
+                    </ion-slide>
+                </ion-slides>
+                <div *ngIf=" list.image.length==1">
+                        <img [src]="uploadUrl+list.image[0].image_name">
+                </div>
+            </div>
+            
+            <div class="errow">
+                <!-- For Hindi -->
+                <!-- {{lang !='en' ? list.hin_category_name : list.category_name |titlecase}} -->
+                <p >{{list.category_name |titlecase}}</p>
+                <i  (click)="goOnProductDetailPage(list.id)" class="material-icons">trending_flat</i>
+                
+                <!-- <p class="view-btn" *ngIf="list.description" (click)="view_description(lang !='en' ? list.hin_description : list.description, 'category description')">{{'View Description' | translate}}</p> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="bg-outer padding0">
+        <div class="bg-inner">
+            <div class="head">
+                <h2>Related Products</h2>
+            </div>
+            <div class="carousel sm-label-font">
+    
+                <div class="carousel-item">
+                      <img src="https://www.logaster.com/blog/wp-content/uploads/2020/04/banner-example-2.jpg" alt="">
+                      <label>Toyzone My Little Kitchen</label>
+                      <label>Toyzone My Little Kitchen</label>
+                    </div>
+                    
+                    <div class="carousel-item">
+                      <img src="https://www.logaster.com/blog/wp-content/uploads/2020/04/banner-example-2.jpg" alt="">
+                      <label>Toyzone 4 in 1 My School Desk</label>
+                    </div>
+                    
+                    <div class="carousel-item">
+                      <img src="https://www.logaster.com/blog/wp-content/uploads/2020/04/banner-example-2.jpg" alt="">
+                      <label>Intex Fancy Stars Pool Set With Ball & Ring (Multicolor)</label>
+                    </div>
+                    
+                    <div class="carousel-item">
+                      <img src="https://www.logaster.com/blog/wp-content/uploads/2020/04/banner-example-2.jpg" alt="">
+                      <label>Intex Arm Band</label>
+                    </div> 
+    
+            </div>
+        </div>
+    </div> -->
+    
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="flag!=1">
+        <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="{{'Loading more data...' | translate}}">
+    </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+</ion-content>
+

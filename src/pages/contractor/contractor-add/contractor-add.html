@@ -1,0 +1,145 @@
+<!--
+  Generated template for the ContractorAddPage page.
+  
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'Add New Request' | translate }} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="main-field padding16">
+    <!-- <h3>{{ 'Basic information' | translate}} </h3> -->
+    <div class="cs-form mb10">
+      
+      <form  (ngSubmit)="f.form.valid && submit() " #f="ngForm" >      
+        
+        <ion-list>
+       
+        <ion-item class="cs-input mt0" [ngClass]="{'error':f.submitted && distributor_id?.invalid}">
+          <ion-label floating>{{'Select Distributor' | translate}}<span>*</span></ion-label>
+          <ion-select name="distributor_id" [(ngModel)]="conData1.distributor_id" #distributor_id="ngModel" required >
+            <ion-option *ngFor="let row of distributor_list" value="{{row.id}}">{{row.company_name | titlecase}} {{row.mobile_no}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+
+  <ion-item class="cs-input" [ngClass]="{'error':f.submitted && bill_no?.invalid}" >
+              <ion-label floating>{{'Bill No.' | translate}}<span>*</span></ion-label>
+              <ion-input type="text"   [(ngModel)]="conData1.bill_no" name="bill_no" #bill_no="ngModel"  autocorrect="off" required></ion-input>
+            </ion-item>
+            
+            <ion-item class="cs-date mb0" [ngClass]="{'error':f.submitted && bill_date?.invalid}">
+              <ion-label>{{'Bill Date' | translate}}<span>*</span></ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" max={{today_date}} type="text" name="bill_date" #bill_date="ngModel" [(ngModel)]="conData1.bill_date" required>
+              </ion-datetime>
+          </ion-item>
+
+            <ion-item class="cs-input" [ngClass]="{'error':f.submitted && bill_amount?.invalid}">
+              <ion-label floating>{{'Bill Amount Without Gst' | translate}}<span>*</span></ion-label>
+              <ion-input type="text"   [(ngModel)]="conData1.bill_amount" name="bill_amount" #bill_amount="ngModel"  autocorrect="off"  required></ion-input>
+            </ion-item>
+
+
+
+        </ion-list>
+        
+
+         <!-- <div *ngIf="f.submitted && dealer_name.invalid" class="invalid-feedback">
+                <div *ngIf="dealer_name.errors.required">{{'Field is Required' | translate}}</div>
+              </div> -->
+
+                   <!-- <ion-item class="cs-input" >
+              <ion-label floating>{{'Total Point' | translate}}</ion-label>
+              <ion-input type="tel"   [(ngModel)]="conData1.totalPoint" name="totalPoint" #qty="ngModel" autocomplete="off" autocorrect="off"   readonly></ion-input>
+            </ion-item> -->
+
+        <!-- <div class="sprate-block" >
+          <ion-list>
+            <ion-item class="cs-input mt0">
+              <ion-label floating>{{'Product Name' | translate}}</ion-label>
+              <ion-select name="product_point_group"  [(ngModel)]="conData1.product_point_group"  #product_point_group="ngModel">
+                <ion-option  *ngFor="let val of product_code" value={{val.product_point_group}} >{{val.product_point_group}}</ion-option>
+              </ion-select>
+            </ion-item>
+            
+            <ion-item class="cs-input" >
+              <ion-label floating>{{'Quantity' | translate}}</ion-label>
+              <ion-input type="tel"   [(ngModel)]="conData1.qty" name="qty" #qty="ngModel" autocomplete="off" autocorrect="off" min="0"  maxlength="5" minlength="1" ></ion-input>
+            </ion-item>
+            
+          
+              <button type="text"  ion-button full color="secondary" [disabled]="!conData1.product_point_group  || !conData1.qty"   (click)="addItem()" >{{'Add To List' | translate}}</button>
+            </ion-list>
+
+            <div class="card-list">
+              <div class="card-item" *ngFor="let row of contractorData; let i = index">
+                <div class="data-content">
+                  <p><strong>{{'Product' | translate}}: </strong> {{row.product_point_group}}</p>
+                  <div class="item-flex">
+                    <p><strong>{{'Quantity' | translate}}: </strong> {{row.qty}}</p>
+
+                  </div>
+
+                </div>
+                <div class="data-action">
+                  <a ion-fab mini color="danger" (click)="deleteItem(i)"><ion-icon name="trash"></ion-icon></a>
+                </div>
+              </div>
+              
+            </div>
+         
+          </div> -->
+
+
+
+
+          <!-- <div class="sprate-block" >
+            <div class="upload-document" (click)="onUploadChange()" >
+              <p *ngIf="conData1.image=='' || conData1.image== undefined"><i class="material-icons">add_circle</i><br>{{ 'Upload Bill' | translate}}</p>
+              <img *ngIf="conData1.image != ''"[src]="conData1.image" alt="">
+            </div>
+            
+          </div> -->
+
+              <ion-item>
+                    <div class="add-new padding0" >
+                        <div class="uplode-image">
+                            <ul>
+                                <li *ngFor="let pic of image_data;let i = index;" >
+                                    <img src="{{pic.image}}" >
+                                    <button><i class="material-icons" (click)="remove_image(i)">clear</i></button>
+                                </li>
+                                
+                                <li (click)="captureImage()">
+                                    <label>
+                                        <input type="file" style="display: none;">
+                                        <div class="other">
+                                            <a ><i class="material-icons" >camera_alt</i></a>
+                                        </div>
+                                    </label>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                </ion-item>
+          
+         
+          <div class="pt32 pb16">
+            <button [disabled]="saveFlag" ion-button full >{{ 'Save' | translate }}</button>
+          </div>
+        </form>
+        
+        
+        
+      </div>
+    </div>
+  </ion-content>
+  

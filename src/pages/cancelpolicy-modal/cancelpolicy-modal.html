@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>cancelpolicy-modal</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="popup-modal">
+    
+    <div class="modal-center">
+        <div class="modal-content in-modal">
+            <form #f="ngForm">
+                <h1>{{'Jal Uphar' | translate}} </h1>
+                <p class="highligt-error" *ngIf="karigar_detail.document_image == '' || karigar_detail.document_no == ''">* Your document details are missing !</p>
+                
+                <p>{{'Are you sure to redeem your'| translate}} {{gift_detail.coupon_points}} {{'Points' |translate}}?</p>
+                
+                <div class="number-content">
+                    <p>{{'Enter your 6 digit number that sent to' | translate}} <span class="blue-color lineh24">+91 {{karigar_detail.mobile_no}}</span>
+                    </p>
+                </div>
+                <div class="input-section">
+                    <div class="input-adjust m0">
+                        <input class="pl16 radius-none" type="tel" name="otp" placeholder="{{'Enter OTP' | translate}}" #otp="ngModel" [(ngModel)]="data.otp" (ngModelChange)="otpvalidation()" required>
+                        <div class="otp-error" *ngIf="!otp_value && otp?.touched">
+                            <p>{{'Wrong OTP value' | translate}}</p>
+                        </div>
+                    </div>
+                    <div class="resend">
+                        <a (click)="resendOtp()">{{'Resend' | translate}}</a>
+                    </div>
+                </div>
+                
+                
+                <ng-container *ngIf="redeemType == 'Cash'">
+                
+                <ion-list radio-group class="payment-option" name="payment_type" [(ngModel)]="data.payment_type" #user_type="ngModel" payment_type>
+                    <ion-list-header>
+                        {{'Points Received Type' | translate}}
+                    </ion-list-header>
+                    
+                    <ion-item>
+                        <ion-label><img src="assets/imgs/paytm.png">{{'Paytm' | translate}}</ion-label>
+                        <ion-radio value="Paytm"></ion-radio>
+                    </ion-item>
+                    
+                    <ion-item>
+                        <ion-label><img src="assets/imgs/phonepay.png">{{'PhonePe' | translate}}</ion-label>
+                        <ion-radio value="PhonePe"></ion-radio>
+                    </ion-item>
+                    
+                    <ion-item>
+                        <ion-label><img src="assets/imgs/googlepay.png">{{'Google Pay' | translate }}</ion-label>
+                        <ion-radio value="Google Pay"></ion-radio>
+                    </ion-item>
+                    
+                    <ion-item *ngIf="redeemType == 'gift'">
+                        <ion-label><img src="assets/imgs/home-icon/gift.svg">{{'Gift' | translate}}</ion-label>
+                        <ion-radio value="Gift"></ion-radio>
+                    </ion-item>
+                </ion-list>
+                
+                
+                <ng-container *ngIf="data.payment_type == 'Paytm' || data.payment_type == 'PhonePe' || data.payment_type == 'Google Pay'">
+                    <div class="check-bx">
+                        <ion-item>
+                            <ion-checkbox color="secondary" checked="true" name="check1" #check1="ngModel" [(ngModel)]="data.check1" (click)="myNumber()">
+                            </ion-checkbox>
+                        </ion-item>
+                        <p>{{'Same as login number' | translate}}</p>
+                    </div>
+                    
+                    <div class="input-section">
+                        <div class="input-adjust m0">
+                            <input class="pl16 radius-none" type="tel" name="payment_number" placeholder="{{data.payment_type}} Number" #payment_number="ngModel" [(ngModel)]="data.payment_number" minlength="10" maxlength="10"  required>
+                            <div class="otp-error" *ngIf="!payment_number && otp?.payment_number">
+                                <p>{{data.payment_type}} number required</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </ng-container>
+                <ng-container *ngIf="redeemType == 'gift'">
+                    <div class="check-bx mt0">
+                        <ion-item>
+                            <ion-checkbox color="secondary" checked="true" name="check1" #check1="ngModel" [(ngModel)]="data.check1" (click)="address()">
+                            </ion-checkbox>
+                        </ion-item>
+                        <p>{{'Same as address' | translate}}</p>
+                    </div>
+                    
+                    <div class="input-section">
+                        <div class="input-adjust m0 mt0">
+                            <textarea class="pl16 mt0"  name="shipping_address" placeholder="{{ 'Shipping Address' | translate}}" #shipping_address="ngModel" [(ngModel)]="data.shipping_address"   required></textarea>
+                            <!-- <div class="otp-error" *ngIf="!shipping_address && otp?.shipping_address">
+                                <p>{{data.payment_type}} number required</p>
+                            </div> -->
+                        </div>
+                    </div>
+                </ng-container>
+                
+                <div class="check-bx">
+                    <ion-item>
+                        <ion-checkbox color="secondary" checked="true" name="check" #check="ngModel" [(ngModel)]="data.check" required></ion-checkbox>
+                    </ion-item>
+                    <p>{{'I have read' | translate}} <a (click)="goOnCancelationPolicy()">{{'cancelation policy' | translate}}</a></p>
+                </div>
+                <div class="footer-btn">
+                    <a class="outline-btn" (click)="dismiss()">{{'No' | translate}}</a>
+                    <button class="fill-btn" [disabled]="!data.check ||!data.otp ||!otp_value || karigar_detail.document_image == '' || karigar_detail.document_no == '' " (click)="f.form.valid && submit()">{{'Yes' | translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ion-content>

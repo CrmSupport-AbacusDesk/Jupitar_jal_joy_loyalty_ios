@@ -1,0 +1,195 @@
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-title *ngIf="redeem_type == 'gift'">{{'Gift Request Status' | translate}}</ion-title> -->
+        <ion-title>{{'Redeem Request Detail' | translate}}</ion-title>
+        
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding *ngIf="redeem_type == 'gift'">
+    
+    <div class="shipped-detail" >
+        <div class="content edit-content">
+            <p>{{'Shipping address' | translate}}</p>
+            <a *ngIf="!shipped_detail.shipped_type && edit=='' && karigar_gift.gift_status=='Pending'" class="edit-field" (click)="edit='1'">
+                <i class="material-icons">create</i>
+            </a>
+            <h1 *ngIf="edit==''">{{karigar_gift.shipping_address}}</h1>
+            <div *ngIf="edit=='1'">
+                <textarea palceholder="Shipping address" name="shipping_address " #shipping_address ="ngModel" [(ngModel)]="karigar_gift.shipping_address" ></textarea>
+                <button  ion-button color="success" round small  block [disabled]="karigar_gift.shipping_address==''" (click)="editAddress()">Save</button>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="phone">
+        <img src="{{upload_url + gift_detail.image}}">
+    </div>
+    
+    <table>
+        <tr>
+            <td>{{'Date' | translate}}</td>
+            <td>{{karigar_gift.date_created | date:'d MMM y'}}</td>
+        </tr>
+        <tr>
+            <td>{{'Req. ID' | translate}}</td>
+            <td>{{karigar_gift.invoice_id}}</td>
+        </tr>
+        <tr>
+            <td>{{'Gift Title' | translate}}</td>
+            <td>{{karigar_gift.gift_title}}</td>
+        </tr>
+        <tr *ngIf="karigar_gift.Specification">
+            <td>{{'Specification' | translate}}</td>
+            <td>
+                <p  [innerHTML]="karigar_gift.Specification"></p>
+            </td>
+        </tr>
+        <tr>
+            <td>{{'Points' | translate}}</td>
+            <td>{{karigar_gift.gift_points}}</td>
+        </tr>
+        <tr>
+            <td>{{'Redeem Type' | translate}}</td>
+            <td>{{karigar_gift.redeem_type | titlecase}}</td>
+        </tr>
+        
+        <tr *ngIf="karigar_gift.gift_status">
+            <td>{{'Redeem Status' | translate}}</td>
+            <td class="{{karigar_gift.gift_status}}"><strong>{{karigar_gift.gift_status}}</strong></td>
+        </tr>
+
+        <tr *ngIf="karigar_gift.receive_status">
+            <td>{{'Gift Status' | translate}}</td>
+            <td class="{{karigar_gift.gift_status}}"><strong>{{karigar_gift.receive_status}}</strong></td>
+        </tr>
+        <tr *ngIf="karigar_gift.reject_reason">
+            <td>{{'Reject Reason' | translate}}</td>
+            <td >{{karigar_gift.reject_reason}}</td>
+        </tr>
+        
+        <ng-container *ngIf="shipped_detail.shipped_type">
+            <tr>
+                <td>{{'Shipped by' | translate}}</td>
+                <td>{{shipped_detail.shipped_type}}</td>
+            </tr>
+            <tr>
+                <td *ngIf="shipped_detail.estimated_date != '0000-00-00'">{{'Estimate delivery Date' | translate}}</td>
+                <td>{{shipped_detail.estimated_date | date:'d MMM y'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Shipping information' | translate}}</td>
+                <td>
+                    <p [innerHTML]="shipped_detail.shipping_information" ></p>
+                </td>
+            </tr>
+        </ng-container>
+        
+        <tr *ngIf="karigar_gift.received_date != '0000-00-00'">
+            <td>{{'Receive Date' | translate}}</td>
+            <td>{{karigar_gift.received_date | date:'d MMM y'}}</td>
+        </tr>
+        
+        <tr *ngIf="karigar_gift.receive_remark != ''">
+            <td>{{'Receiving Remark' | translate}}</td>
+            <td>{{karigar_gift.receive_remark}}</td>
+        </tr>
+        
+    </table>
+    
+    <div class="padding16" *ngIf="receive_status == 'Shipped'">
+        <button ion-button color="success" round  block (click)="recvConfirmation(karigar_gift.id,karigar_gift.redeem_type)">{{'Click here if you recieve' | translate}}</button>
+    </div>
+</ion-content>
+
+<ion-content padding *ngIf="redeem_type == 'Cash'">
+    <div>
+        <table>
+            <tr>
+                <td>{{'Date' | translate}}</td>
+                <td>{{karigar_gift.date_created | date:'d MMM y'}}</td>
+            </tr>
+            <tr>
+                <td>{{'Req. ID' | translate}}</td>
+                <td>{{karigar_gift.invoice_id}}</td>
+            </tr>
+            <tr>
+                <td>{{'Title' | translate}}</td>
+                <td>{{karigar_gift.gift_title}}</td>
+            </tr>
+            <tr>
+                <td>{{'Points' | translate}}</td>
+                <td>{{karigar_gift.gift_points}}</td>
+            </tr>
+            <tr>
+                <td>{{'Redeem Type' | translate}}</td>
+                <td>{{karigar_gift.redeem_type}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.payment_type">
+                <td>{{'Payment Type' | translate}}</td>
+                <td>{{karigar_gift.payment_type}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.payment_number">
+                <td>{{'Payment Number' | translate}}</td>
+                <td>{{karigar_gift.payment_number}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.account_holder_name">
+                <td>{{'Account Holder Name' | translate}}</td>
+                <td>{{karigar_gift.account_holder_name}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.bank_name">
+                <td>{{'Bank Name' | translate}}</td>
+                <td>{{karigar_gift.bank_name}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.account_no">
+                <td>{{'Account Number' | translate}}</td>
+                <td>{{karigar_gift.account_no}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.ifsc_code">
+                <td>{{'IFSC Code' | translate}}</td>
+                <td>{{karigar_gift.ifsc_code}}</td>
+            </tr>
+            <tr *ngIf="karigar_gift.gift_status">
+                <td>{{'Redeem Status' | translate}}</td>
+                <td class="{{karigar_gift.gift_status}}"><strong>{{karigar_gift.gift_status}}</strong></td>
+            </tr>
+            <tr *ngIf="karigar_gift.reject_reason">
+                <td>{{'Reject Reason' | translate}}</td>
+                <td >{{karigar_gift.reject_reason}}</td>
+            </tr>
+            <tr  *ngIf="karigar_gift.receive_status">
+                <td>{{'Payment Status' | translate}}</td>
+                <td class="{{karigar_gift.gift_status}}"><strong>{{karigar_gift.receive_status}}</strong></td>
+            </tr>
+            
+            
+            <tr *ngIf="shipped_detail.estimated_date != '0000-00-00'">
+                <td>{{'Transfer Date' | translate}}</td>
+                <td>{{shipped_detail.estimated_date | date:'d MMM y'}}</td>
+            </tr>
+            <tr *ngIf="shipped_detail.shipping_information != ''">
+                <td>{{'Transfer Remark' | translate}}</td>
+                <td>{{shipped_detail.shipping_information}}</td>
+            </tr>
+            
+            <tr *ngIf="karigar_gift.received_date != '0000-00-00'">
+                <td>{{'Receive Date' | translate}}</td>
+                <td>{{karigar_gift.received_date | date:'d MMM y'}}</td>
+            </tr>
+            
+            <tr *ngIf="karigar_gift.receive_remark != ''">
+                <td>{{'Receiving Remark' | translate}}</td>
+                <td>{{karigar_gift.receive_remark}}</td>
+            </tr>
+            
+        </table>
+        
+        
+        
+        
+        <div class="padding16" *ngIf="receive_status == 'Transfer'">
+            <button ion-button color="success" round  block (click)="recvConfirmation(karigar_gift.id, karigar_gift.redeem_type)">{{'Click here if you recieve' | translate}}</button>
+        </div>
+    </div>
+</ion-content>

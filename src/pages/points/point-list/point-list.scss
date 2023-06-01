@@ -1,0 +1,27 @@
+page-point-list {
+    ion-content{
+        background: #f0f0f0;
+    }
+    
+    .no-history {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 300px;
+        align-items: center;
+        
+        img{
+            height: 60px;
+            width: min-content;
+            margin-bottom: 10px;
+        }
+        p{
+            margin-top: 10px !important;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+    }
+}
+

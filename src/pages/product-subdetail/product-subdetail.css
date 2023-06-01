@@ -1,0 +1,88 @@
+page-product-subdetail .carousel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: auto;
+}
+
+page-product-subdetail .carousel .carousel-item {
+  min-width: 110px;
+  width: 110px;
+  margin-left: 10px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+page-product-subdetail .carousel .carousel-item .img-section {
+  height: 95px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+page-product-subdetail .carousel .carousel-item .img-section img {
+  height: 100%;
+}
+
+page-product-subdetail .carousel .carousel-item label {
+  padding: 0px 4px;
+  background: #5a5c5d;
+  width: 100%;
+  display: block;
+  font-size: 12px;
+  text-transform: capitalize;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  line-height: 17px;
+}
+
+page-product-subdetail .carousel .carousel-item:last-child {
+  margin-left: 16px;
+}
+
+page-product-subdetail .carousel .carousel-item:last-child {
+  margin-right: 10px;
+}
+
+page-product-subdetail .carousel.sm-label-font .carousel-item label {
+  font-size: 10px;
+}
+
+page-product-subdetail .sizes-table {
+  padding: 0px 16px;
+}
+
+page-product-subdetail .sizes-table table {
+  width: 100%;
+  table-layout: fixed;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-collapse: collapse;
+}
+
+page-product-subdetail .sizes-table table tr th {
+  background-color: #2e5ea2;
+  color: #ffffff;
+}
+
+page-product-subdetail .sizes-table table tr td, page-product-subdetail .sizes-table table tr th {
+  font-size: 12px;
+  text-align: center;
+  padding: 5px 8px;
+  border: 1px solid #333;
+}
+/*# sourceMappingURL=product-subdetail.css.map */

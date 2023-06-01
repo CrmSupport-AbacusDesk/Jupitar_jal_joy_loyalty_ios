@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,oBADgB,CAChB,aAAa,CAAA;EAAC,MAAM,EAAE,kBAAkB;CAAE",
+    "sources": [
+        "contractor-list.scss"
+    ],
+    "names": [],
+    "file": "contractor-list.css"
+}

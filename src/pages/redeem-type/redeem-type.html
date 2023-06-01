@@ -1,0 +1,61 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-navbar>
+      <ion-title>{{ 'Redeem Request' | translate }}</ion-title>
+    </ion-navbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <div class="padding16">
+    <div class="card-list"> 
+      <div class="card-content">
+        <img src="assets/icons/wallet.png">
+        <p>{{ 'Total Balance' | translate }}</p>
+      </div>
+      <div class="points flat">
+        {{walletBal}}
+      </div>
+    </div>
+
+    <div class="card-list"> 
+      <div class="card-content">
+        <img src="assets/icons/wallet.png">
+        <p>{{ 'Redeemable Points' | translate }}</p>
+      </div>
+      <div class="points flat">
+        {{redeem_point}}
+      </div>
+    </div>
+    
+    
+    <form #f="ngForm" (ngSubmit)="f.form.valid && submit()">
+      
+      <ion-list  radio-group name="redeem_type" [(ngModel)]="data.redeem_type" #redeem_type="ngModel" >
+        
+        <h2 class="ml18">{{'Request Type' | translate}}</h2>
+        
+        <ion-item>
+          <ion-label>{{'Gift' | translate}}</ion-label>
+          <ion-radio value="gift"></ion-radio>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label>{{'Cash' | translate}}</ion-label>
+          <ion-radio value="Cash"></ion-radio>
+        </ion-item>
+      </ion-list>
+      
+      <ng-container *ngIf="data.redeem_type == 'Cash'">
+        <ion-item >
+          <ion-label>{{'Redeem Point' | translate}}</ion-label>
+          <ion-input type="tel" placeholder="{{'Enter Point' | translate}}" name="redeem_amount" [(ngModel)]="data.redeem_amount" #redeem_amount="ngModel"></ion-input>
+        </ion-item>
+      </ng-container>
+      
+      
+      <button class="mt30" (click)="cashPointLimit()" ion-button color="primary" block  round  outline>{{'NEXT' | translate}}</button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,75 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-android-support-gradle-release": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-device-orientation": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-market": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "cordova-support-google-services": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    },
+    "polarcape-cordova-plugin-document-handler": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    }
+  },
+  "dependent_plugins": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.jupiteraqualines.app"
+    }
+  }
+}

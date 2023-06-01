@@ -1,0 +1,25 @@
+
+<ion-content padding class="popup-modal">
+  <div class="modal-center">
+    <div class="modal-content in-modal">
+      <p>{{'Transfer Points' | translate}} </p>
+      
+      <div class="input-section">
+        <div class="input-adjust m0">
+          <input class="radius-none" style="padding-left: 12px ! important;" type="number" placeholder="{{'Enter Points' | translate}}" name="points"  #points="ngModel" [(ngModel)]="data.points"  required>
+        </div>
+      </div>
+
+      <div class="input-section">
+        <div class="input-adjust m0">
+          <textarea class="radius-none" type="text" placeholder="{{'Enter Remark' | translate}}" name="remark"  #remark="ngModel" [(ngModel)]="data.remark"  ></textarea>
+        </div>
+      </div>
+      
+      <div class="footer-btn">
+        <button class="outline-btn" (click)="dismiss()">{{'Cancel' | translate}}</button>	
+        <button class="fill-btn"  [disabled]="saveFlag == true" (click)="submit()">{{'Save' | translate}}</button>
+      </div>	
+    </div>
+  </div>
+</ion-content>

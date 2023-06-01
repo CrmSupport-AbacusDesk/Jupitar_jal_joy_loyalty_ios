@@ -1,0 +1,156 @@
+page-contractor-add {
+    
+    .sprate-block {
+        padding:10px;
+        border: 1px dashed #2e5ea2;
+        border-radius: 6px;
+        margin-top: 16px;
+    }
+
+    .item-flex{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        grid-column-gap: 10px;
+    }
+
+    .item-label-floating .select-md{
+        padding: 8px !important;
+    }
+
+    .upload-document{
+        background: #fff;
+        border: 0px;
+    }
+
+
+    .add-new {
+		padding: 16px;
+		.cs-form {
+			ion-list {
+				margin: 0px !important;
+				ion-item {
+					&.cs-input {
+						min-height: inherit;
+						height: 45px;
+						padding-left: 0px !important;
+						box-shadow: none !important;
+						&.input-has-focus:last-child {
+							border-bottom-color: #ccc !important;
+						}
+						.item-inner {
+							padding-right: 0px !important;
+							box-shadow: none !important;
+							border: 1px solid #ccc;
+							border-bottom-color: #ccc !important;
+							.input-wrapper {
+								ion-label {
+									margin: 0px;
+									padding: 0px;
+									position: absolute;
+									padding-left: 16px;
+									margin-top: -15px;
+									font-size: 14px;
+									&.label-md[floating] {
+										color: #949494;
+										transform-origin: 0px 80px;
+									}
+								}
+								ion-input {
+									input {
+										padding-left: 13px;
+										padding-right: 13px;
+										padding-top: 15px;
+										width: 100%;
+										margin: 0px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		h4 {
+			font-size: 18px;
+			margin-bottom: 16px !important;
+			position: relative;
+			width: fit-content;
+			line-height: 17px;
+			&:after {
+				content: "";
+				position: absolute;
+				bottom: -3px;
+				left: 0px;
+				width: 107%;
+				height: 3px;
+				border-radius: 5px;
+				background: $secondary;
+			}
+		}
+		.uplode-image {
+			ul {
+
+				display: flex;
+				flex-wrap: wrap;
+				grid-column-gap: 10px;
+				grid-row-gap: 10px;
+				li {
+					border-radius: 7px;
+					overflow: hidden;
+					display: inline-block;
+					background: #ec3237;
+					position: relative;
+					transition: all .5s;
+					width: 90px;
+					height: 90px;
+					margin: 0 4px 7px;
+					button {
+						position: absolute;
+						z-index: 99;
+						top: 0;
+						right: -1px;
+						background: $danger;
+						width: 22px;
+						height: 22px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						border-radius: 100px;
+						i {
+							color: $white;
+							font-size: 16px;
+						}
+					}
+					label {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 100%;
+						height: 100%;
+						.other {
+							text-align: center;
+							a {
+								i {
+									color: $white;
+								}
+							}
+							span {
+								font-size: 10px;
+								color: $white;
+							}
+						}
+					}
+					img {
+						width: 100%;
+						height: 100%;
+					}
+					&:nth-child {
+						margin-left: 0px !important;
+					}
+				}
+			}
+		}
+	}
+}

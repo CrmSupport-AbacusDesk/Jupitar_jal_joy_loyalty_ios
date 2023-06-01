@@ -1,0 +1,12 @@
+
+<ion-content padding style="background-color: #000;">
+  <div class="success">
+    <img [src]="uploadUrl+ sucessData.image">
+  </div>
+</ion-content>
+<ion-footer>
+  <div class="flex-btn">
+    <button ion-button outline color="danger" (click)="dismiss()" >Cancel</button>
+    <button ion-button color="primary" (click)="scan()">Scan agian</button>
+  </div>
+</ion-footer>

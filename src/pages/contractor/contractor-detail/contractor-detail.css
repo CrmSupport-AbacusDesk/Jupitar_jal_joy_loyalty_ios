@@ -1,0 +1,18 @@
+page-contractor-detail .cs-list {
+  border-radius: 0px;
+}
+
+page-contractor-detail ion-item ion-label {
+  font-size: 13px;
+  white-space: normal;
+}
+
+page-contractor-detail h2 {
+  margin: 0px 16px !important;
+  font-size: 14px;
+  text-transform: capitalize;
+  border-bottom: 2px solid;
+  display: inline-block;
+  color: #588a07;
+}
+/*# sourceMappingURL=contractor-detail.css.map */

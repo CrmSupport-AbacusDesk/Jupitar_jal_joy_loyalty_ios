@@ -1,0 +1,29 @@
+<!--
+  Generated template for the BillhistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="main-header remove" >
+  <ion-navbar>
+    <ion-title>{{ 'Downloads' | translate }}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <div class="container padding16">
+      
+      <div class="main" *ngFor="let list of pdf">
+        <a href="{{uploadUrl + list.pdf}}">
+        <div class="part1">
+          <img  src="assets/imgs/pdf.png" alt="#">
+          <span>{{list.pdf_name}} / {{list.cat_code}}</span>
+         
+        </div>
+        </a>  
+      </div>
+    </div>
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

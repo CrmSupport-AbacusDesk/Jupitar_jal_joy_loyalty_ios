@@ -1,0 +1,73 @@
+<!--
+  Generated template for the ContractorListPage page.
+  
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ 'Channel Partner Points List' | translate }} </ion-title>
+  </ion-navbar>
+
+  <div class="ion-tab-btn" style="margin-top:1px;">
+    <ion-segment [(ngModel)]="details" >
+      <!-- <ion-segment-button (click)="filter = {}; filter.status = 'All'; contractorList()" [ngClass]="{'active': filter.status == 'All'}">
+        {{ 'All' | translate }}  ({{all_count}})
+      </ion-segment-button> -->
+      <!-- click)="filter = {}; filter.status = 'Pending'; contractorList()" [ngClass]="{'active': filter.status == 'Pending'}" -->
+      <ion-segment-button  value="Pending"  (click)="contractorList(details)">
+        {{ 'Pending' | translate }}   ({{pending_count}})
+      </ion-segment-button>
+      <ion-segment-button  value="Approved" (click)="contractorList(details)">
+        {{ 'Approved' | translate }}  ({{approved_count}})
+      </ion-segment-button>
+      <ion-segment-button  value="Reject"  (click)="contractorList(details)">
+        {{ 'Reject' | translate }} ({{reject_count}})
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+ 
+</ion-header>
+
+<ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  
+  
+  <!-- [ngSwitch]="list" -->
+  <div class="padding16" >
+    
+    <div class="cs-list" *ngFor="let row of data; let i = index;" (click)="goOnContractorDetail(row.id)">
+      <div class="top-block">
+        <p>{{row.company_name | titlecase}}</p>
+        <ion-icon name="arrow-forward" color="primary"  ios="ios-arrow-forward"></ion-icon>
+      </div>
+      <div class="middle-block">
+        <div class="three-block">
+          <p>{{'Date' | translate}} : <strong>{{row.date_created |  date:'d MMMM y'}}</strong></p>
+          <p>{{'Status' | translate}} : <strong class="{{row.status}}">{{row.status}}</strong> </p>
+
+        </div>
+        <div class="three-block" *ngIf="row.total_items || row.total_qty">
+          <p>{{'Quantity' | translate}} : <strong>{{row.total_qty}}</strong></p>
+          <!-- <p>{{'Total Item' | translate}} : <strong>{{row.total_items}}</strong></p> -->
+          <p *ngIf="row.status =='Reject'"><strong>{{'Reason' | translate}}:</strong>  {{row.status_reason ? row.status_reason :'N/A'}}</p>
+
+        </div>
+      </div>
+      <div class="top-block footer-block" *ngIf="row.status =='Approved'">
+        <p>{{'Points Earned' | translate}}: <strong style="font-size: 14px; color: #2e5ea2;">{{row.points}}</strong></p>
+      </div>
+    </div>
+  </div>
+  <div class="image-detail"  *ngIf="!data.length && ( (filter.status == 'All' && all_count ==0 ) || (filter.status == 'Pending' && pending_count == 0 ) || (filter.status == 'Approved' && approved_count == 0 ) || (filter.status == 'Reject' && reject_count ==0 ))">
+    <img src="assets/imgs/no_found.svg">
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="goOnContractorAdd()"> <ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
